@@ -1,6 +1,8 @@
-version: "1.1"
+version: "3"
 services:
   kafka:
+    # NOTE: Использована версия образа от bitnami, т.к. она позволяет использовать протокол KRaft
+    # и запускать Kafka без Zookeeper
     image: 'bitnami/kafka:latest'
     ports:
       - "9092:9092"

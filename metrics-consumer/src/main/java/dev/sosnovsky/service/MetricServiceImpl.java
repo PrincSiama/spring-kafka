@@ -1,6 +1,6 @@
 package dev.sosnovsky.service;
 
-import dev.sosnovsky.dto.MetricDto;
+import dev.sosnovsky.MetricDto;
 import dev.sosnovsky.exception.NotFoundException;
 import dev.sosnovsky.model.Metric;
 import dev.sosnovsky.repository.MetricRepository;

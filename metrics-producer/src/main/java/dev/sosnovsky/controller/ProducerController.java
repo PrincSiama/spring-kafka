@@ -1,7 +1,8 @@
 package dev.sosnovsky.controller;
 
+import dev.sosnovsky.MetricDto;
+import dev.sosnovsky.dto.SuccessResponseDto;
 import dev.sosnovsky.producer.KafkaProducer;
-import dev.sosnovsky.dto.MetricDto;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +17,8 @@ public class ProducerController {
 
     @PostMapping("/metrics")
     @Operation(summary = "Сохранение сообщения в топик")
-    public String sendMessage(@RequestBody MetricDto metricDto) {
+    public SuccessResponseDto sendMessage(@RequestBody MetricDto metricDto) {
         kafkaProducer.sendMessage(metricDto);
-        return "The metrics were successfully sent";
+        return new SuccessResponseDto("Метрика была успешно отправлена");
     }
 }

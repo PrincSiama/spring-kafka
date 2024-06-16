@@ -1,6 +1,6 @@
 package dev.sosnovsky.consumer;
 
-import dev.sosnovsky.dto.MetricDto;
+import dev.sosnovsky.MetricDto;
 import dev.sosnovsky.service.MetricService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -12,8 +12,8 @@ public class KafkaConsumer {
 
     private final MetricService metricService;
 
-    @KafkaListener(topics = "metrics-topic", groupId = "metrics")
-    public void getMetricFromTopic(MetricDto metricDto) {
+    @KafkaListener(topics = "${kafka.metric.topic.name}", groupId = "metrics")
+    public void saveMetricFromTopic(MetricDto metricDto) {
         metricService.saveMetric(metricDto);
     }
 }

@@ -1,6 +1,6 @@
 package dev.sosnovsky.service;
 
-import dev.sosnovsky.dto.MetricDto;
+import dev.sosnovsky.MetricDto;
 import dev.sosnovsky.model.Metric;
 
 import java.util.List;

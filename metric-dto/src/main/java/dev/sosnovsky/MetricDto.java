@@ -1,4 +1,4 @@
-package dev.sosnovsky.dto;
+package dev.sosnovsky;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
