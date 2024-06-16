@@ -1,6 +1,6 @@
 package dev.sosnovsky.consumer;
 
-import dev.sosnovsky.MetricDto;
+import dev.sosnovsky.dto.MetricDto;
 import dev.sosnovsky.service.MetricService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;

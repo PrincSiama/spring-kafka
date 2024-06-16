@@ -1,6 +1,6 @@
 package dev.sosnovsky.controller;
 
-import dev.sosnovsky.MetricDto;
+import dev.sosnovsky.dto.MetricDto;
 import dev.sosnovsky.dto.SuccessResponseDto;
 import dev.sosnovsky.producer.KafkaProducer;
 import io.swagger.v3.oas.annotations.Operation;

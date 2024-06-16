@@ -14,12 +14,10 @@ public class Metric {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name;
+    @Column(name = "metric_group")
+    private String metricGroup;
 
-    private String description;
-
-    @Column(name = "is_exception")
-    private Boolean isException;
+    private Double value;
 
     @Column(name = "create_time")
     private LocalDateTime createTime = LocalDateTime.now();

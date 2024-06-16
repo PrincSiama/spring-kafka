@@ -1,12 +1,15 @@
 package dev.sosnovsky.controller;
 
+import dev.sosnovsky.dto.SuccessResponseDto;
 import dev.sosnovsky.model.Metric;
 import dev.sosnovsky.service.MetricService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -15,12 +18,6 @@ import java.util.List;
 public class ConsumerController {
 
     private final MetricService metricService;
-
-    @GetMapping
-    @Operation(summary = "Получение списка всех метрик из базы")
-    public List<Metric> getAllMetrics() {
-        return metricService.getAllMetrics();
-    }
 
     @GetMapping("/{id}")
     @Operation(summary = "Получение метрики по id")
@@ -36,14 +33,19 @@ public class ConsumerController {
 
     @GetMapping("/statistic/count")
     @Operation(summary = "Получение общего количества метрик в базе данных")
-    public String getCountOfMetrics() {
+    public SuccessResponseDto getCountOfMetrics() {
         return metricService.getCountOfMetrics();
     }
 
-    @GetMapping("/statistic/exception")
-    @Operation(summary = "Получение списка метрик с ошибками")
-    public List<Metric> getMetricsWithExceptions() {
-        return metricService.getMetricsWithExceptions();
+    @GetMapping("/statistic")
+    @Operation(summary = "Получение списка метрик по заданной группе за определенный период времени. " +
+            "При отсутствии параметров получим список всех метрик за всё время")
+    public List<Metric> getMetricsByMetricGroup(@RequestParam(value = "group", required = false) String group,
+                                                @RequestParam(value = "from", required = false)
+                                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from,
+                                                @RequestParam(value = "to", required = false)
+                                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to) {
+        return metricService.findAllMetricsByGroupAndCreateDate(group, from, to);
     }
 
     @PostMapping("/clear")
