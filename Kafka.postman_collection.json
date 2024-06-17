@@ -63,6 +63,25 @@
 			"response": []
 		},
 		{
+			"name": "get all metrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/metrics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "get metric by id",
 			"request": {
 				"method": "GET",

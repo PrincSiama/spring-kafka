@@ -16,6 +16,6 @@ public class KafkaProducer {
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
     public void sendMessage(MetricDto metricDto) {
-        kafkaTemplate.send(topicName, metricDto);
+            kafkaTemplate.send(topicName, metricDto);
     }
 }

@@ -19,6 +19,12 @@ public class ConsumerController {
 
     private final MetricService metricService;
 
+    @GetMapping
+    @Operation(summary = "Получение списка всех метрик из базы")
+    public List<Metric> getAllMetrics() {
+        return metricService.findAllMetricsByGroupAndCreateDate(null, null, null);
+    }
+
     @GetMapping("/{id}")
     @Operation(summary = "Получение метрики по id")
     public Metric getMetricById(@PathVariable @Min(1) int id) {
